@@ -11,8 +11,10 @@ const SearchData = (props) => {
     }
     return (
         <>
-            <div>
-            <input type="search" name="name" value={cityName} onChange={changeCityName} className="border-b-gray-800 bg-slate-300"/>
+            <div className="flex items-center justify-center">
+            <form className="nosubmit">
+                <input type="search" className="nosubmit rounded-lg p-7 bg-slate-300 border-b-gray-800 bg-slate-300" placeholder="Search" name="name" value={cityName} onChange={changeCityName} />
+            </form>
             </div>
         </>
     )

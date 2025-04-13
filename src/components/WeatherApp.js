@@ -39,10 +39,16 @@ const WeatherApp = () => {
         <>
 
         {loading && <p className="mt-4 text-blue-500">Loading weather data...</p>}
-        <h3> Weather App</h3>
-        <SearchData data={cityName} onCityNameChange={onCityNameChange}/>
+        
+        
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-400">
+        <div className="block space-y-10 bg-gray-100 w-full max-w-sm p-8 border border-gray-400 rounded-lg">
+            
+            <SearchData data={cityName} onCityNameChange={onCityNameChange}/>
 
-        <WeatherCard data={weatherData} loading={loading}/>
+            <WeatherCard data={weatherData} loading={loading}/>
+        </div>
+        </div>
         </>
     )
 }

@@ -7,18 +7,24 @@ const WeatherCard = (props) => {
     const WeatherCardData = props.data;
     return (
         <>
-            <h3> Weather Card</h3>
             
             {WeatherCardData && !loadingData  && WeatherCardData.weather ? (
                 <div className="mt-4">
-                <h2>{WeatherCardData.name}</h2>
-                <p>{WeatherCardData.weather[0].description}</p>
-                <p>🌡 Temperature: {WeatherCardData.main.temp}°C</p>
-                <p>💧 Humidity: {WeatherCardData.main.humidity}%</p>
-                <p>🌬 Wind Speed: {WeatherCardData.wind.speed} m/s</p>
+                    <div className="flex flex-col items-center justify-center">
+                        <p className="font-bold text-[30px]"> {WeatherCardData.main.temp}°C</p>
+                        <h2 className="font-bold text-[20px]">{WeatherCardData.name}</h2>
+                        <p className="text-[20px]">{WeatherCardData.weather[0].description}</p>
+                    </div>
+                    <br></br>
+                    <div className="flex justify-around">
+                        <p className="text-[20px]">  {WeatherCardData.main.humidity}% <br></br>humidity</p>
+                        <p className="text-[20px]">  {WeatherCardData.wind.speed} <br></br> m/s</p>
+                    </div>
                 </div>
             ) : (
-                <p>No data found</p>
+                <div className="flex items-center justify-center">
+                    <p className="font-bold text-[20px]">No data found</p>
+                </div>
             )}
         </>
     )
