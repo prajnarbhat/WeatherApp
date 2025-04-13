@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import SearchData from "./SearchData";
+import WeatherCard from "./WeatherCard";
+
 const WeatherApp = () => {
 
     const [weatherData, setWeatherData] = useState(null)
@@ -26,6 +29,10 @@ const WeatherApp = () => {
 
     },[cityName])
 
+    const onCityNameChange = (cityTargetValue) => {
+        setCityName(cityTargetValue)
+    }
+
 
     const API_KEY = 'faa0acb25d9fc113867bccd554ace956';
     return (
@@ -33,20 +40,9 @@ const WeatherApp = () => {
 
         {loading && <p className="mt-4 text-blue-500">Loading weather data...</p>}
         <h3> Weather App</h3>
-        <input type="search" name="name" value={cityName} onChange={(e) => setCityName(e.target.value)} className="border-b-gray-800 bg-slate-300"/>
-            {weatherData && !loading && weatherData.weather ? (
-                <div className="mt-4">
-                <h2>{weatherData.name}</h2>
-                <p>{weatherData.weather[0].description}</p>
-                <p>🌡 Temperature: {weatherData.main.temp}°C</p>
-                <p>💧 Humidity: {weatherData.main.humidity}%</p>
-                <p>🌬 Wind Speed: {weatherData.wind.speed} m/s</p>
-                </div>
-            ) : (
-                <p>No data found</p>
-            )}
+        <SearchData data={cityName} onCityNameChange={onCityNameChange}/>
 
-       
+        <WeatherCard data={weatherData} loading={loading}/>
         </>
     )
 }
